@@ -7,7 +7,7 @@ export default function App() {
   const [submitted, setSubmitted] = useState(false); // State to manage submission status
 
   // Function to handle form submission
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission
     setSubmitted(true); // Update submitted state to true
     // Here, you would typically handle the form data (e.g., send it to an API)
@@ -45,9 +45,9 @@ export default function App() {
           <form className="mb-8" onSubmit={handleSubmit}> {/* Attach handleSubmit to form */}
             <div className="flex flex-col space-y-4 items-center">
               {/* Input for name with proper styling and reduced width */}
-              <input type="text" placeholder="Name" className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-80" aria-label="Name" required value={formData.name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, name: e.target.value })} />
+              <input type="text" placeholder="Name" className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-80" aria-label="Name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
               {/* Input for email with proper styling and reduced width */}
-              <input type="email" placeholder="Email" className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-80" aria-label="Email" required value={formData.email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, email: e.target.value })} />
+              <input type="email" placeholder="Email" className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-80" aria-label="Email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
               {/* Submit button for form submission */}
               <button type="submit" className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors">Subscribe</button>
             </div>
