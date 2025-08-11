@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // Main LandingPage component
 const LandingPage = () => {
+  // State to manage form input values
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  // Handler for form submission
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission
+    console.log('Form submitted:', { name, email });
+    // Clear the input fields after submission
+    setName('');
+    setEmail('');
+  };
+
   return (
-    <div className="bg-yellow-50 min-h-screen flex flex-col justify-between">
+    <div className="bg-gradient-to-r from-yellow-300 to-yellow-500 min-h-screen flex flex-col justify-between">
       {/* Header Section */}
-      <header className="bg-yellow-300 p-5 shadow-md">
+      <header className="bg-yellow-400 p-5 shadow-md">
         <h1 className="text-3xl font-bold text-center text-gray-800">Welcome to Bananase</h1>
         <nav className="flex justify-center space-x-4 mt-4">
           <a href="#features" className="text-gray-700 hover:text-gray-900">Features</a>
@@ -51,12 +64,27 @@ const LandingPage = () => {
       </section>
 
       {/* Contact Section */}
-      <footer id="contact" className="bg-yellow-300 p-10 text-center">
+      <footer id="contact" className="bg-yellow-400 p-10 text-center">
         <h2 className="text-3xl font-bold text-gray-800">Get in Touch</h2>
         <p className="text-gray-600 mt-4">Have questions? We're here to help!</p>
-        <form className="mt-6">
-          <input type="email" placeholder="Your Email" className="p-2 rounded border border-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
-          <button className="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-lg ml-2 transition duration-300 hover:bg-yellow-600">
+        <form className="mt-6 flex flex-col items-center" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="p-2 mb-4 rounded border border-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Your Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="p-2 mb-4 rounded border border-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            required
+          />
+          <button className="bg-yellow-500 text-white px-4 py-2 rounded-lg shadow-lg transition duration-300 hover:bg-yellow-600">
             Subscribe
           </button>
         </form>
